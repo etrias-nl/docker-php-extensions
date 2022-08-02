@@ -7,7 +7,7 @@ COPY ./version ./
 # hadolint ignore=DL3008
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    libxslt-dev && \
+    libxslt1-dev && \
     rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-configure xsl

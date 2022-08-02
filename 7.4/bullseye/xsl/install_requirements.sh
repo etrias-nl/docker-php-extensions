@@ -2,5 +2,5 @@
 
 apt-get update && \
 apt-get install -y --no-install-recommends \
-libxslt && \
+libxslt1-dev && \
 rm -rf /var/lib/apt/lists/*
