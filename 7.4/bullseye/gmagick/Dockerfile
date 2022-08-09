@@ -13,6 +13,7 @@ RUN apt-get update && \
     libgraphicsmagick1-dev \
     libopenjp2-7 \
     libopenjp2-7-dev \
+    libgs-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # hadolint ignore=DL3003
@@ -65,13 +66,13 @@ RUN cd /tmp \
     && curl -L "https://sourceforge.net/projects/graphicsmagick/files/graphicsmagick/$(cat /extension/version | cut -d- -f2)/GraphicsMagick-$(cat /extension/version | cut -d- -f2).tar.gz" --output /tmp/GraphicsMagick.tar.gz \
     && tar zxvf GraphicsMagick.tar.gz \
     && cd GraphicsMagick-* \
-    && ./configure --disable-installed --with-jp2=yes --with-quantum-depth=16 --enable-shared=yes --disable-static \
+    && ./configure --disable-installed --with-jp2=yes --with-gslib=yes --with-quantum-depth=16 --enable-shared=yes --disable-static \
     && make DESTDIR=/GraphicsMagick install \
     && rm -rf /tmp/GraphicsMagick*
 
-COPY ./install* /extension/
-
 WORKDIR /extension
+
+COPY ./install* /extension/
 
 RUN mkdir lib bin
 RUN cp /usr/lib/x86_64-linux-gnu/libjbig.so ./lib
