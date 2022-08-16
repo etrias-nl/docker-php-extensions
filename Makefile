@@ -2,6 +2,7 @@ PHP_VERSION?=7.4
 PHP_DIST?=bullseye
 PHP_EXT_DIR=${PHP_VERSION}/${PHP_DIST}
 DOCKER_IMAGE=etriasnl/php-extensions
+DOCKER_PT_TAG=etriasnl/percona-toolkit:$(shell cat percona-toolkit/Dockerfile | grep 'ENV PERCONA_TOOLKIT_VERSION' | cut -f3 -d' ')
 DOCKER_PROGRESS?=auto
 MAKEFLAGS += --warn-undefined-variables --always-make
 .DEFAULT_GOAL := _
@@ -27,3 +28,9 @@ release: ${PHP_EXT_DIR}/${ext}/.releaser
 release-all: $(shell find "${PHP_EXT_DIR}" -name Dockerfile | sed 's/Dockerfile/.releaser/')
 publish: ${PHP_EXT_DIR}/${ext}/.publisher
 publish-all: $(shell find "${PHP_EXT_DIR}" -name Dockerfile | sed 's/Dockerfile/.publisher/')
+
+pt-release:
+	${exec_docker} hadolint/hadolint hadolint --ignore DL3059 percona-toolkit/Dockerfile
+	docker buildx build --progress "${DOCKER_PROGRESS}" -t "${DOCKER_PT_TAG}" --load percona-toolkit
+pt-publish:
+	docker push "${DOCKER_PT_TAG}"
