@@ -74,7 +74,6 @@ COPY ./install* /extension/
 WORKDIR /extension
 
 RUN mkdir lib bin
-RUN cp /usr/lib/x86_64-linux-gnu/libjbig.so ./lib
 RUN cp /usr/lib/x86_64-linux-gnu/libwebp.so ./lib
 RUN cp /usr/lib/x86_64-linux-gnu/libwebpmux.so ./lib
 RUN cp /usr/lib/x86_64-linux-gnu/liblcms2.so ./lib
@@ -95,6 +94,10 @@ RUN cp /usr/lib/x86_64-linux-gnu/libdeflate.so ./lib
 RUN cp /usr/local/lib/libde265.so ./lib
 RUN cp /usr/local/lib/libheif.so ./lib
 RUN cp /usr/local/lib/libjasper.so ./lib
+
+RUN cp /usr/lib/x86_64-linux-gnu/libjbig.so ./lib
+RUN mv ./lib/libjbig.so ./lib/libjbig.so.0
+RUN ln -s ./libjbig.so ./lib/libjbig.so.0
 
 RUN cp /GraphicsMagick/usr/local/lib/*.so ./lib
 RUN mv ./lib/libGraphicsMagick.so ./lib/libGraphicsMagick.so.3

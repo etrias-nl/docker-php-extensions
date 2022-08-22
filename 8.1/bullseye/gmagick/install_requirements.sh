@@ -2,9 +2,9 @@
 
 apt-get update && \
 apt-get install -y --no-install-recommends \
-jpegoptim && \
-libbsd-dev && \
-libgraphicsmagick-q16-3 \
+jpegoptim \
+libbsd-dev \
+libgraphicsmagick-q16-3 && \
 rm -rf /var/lib/apt/lists/*
 
 DIR=$(dirname "$(readlink -f "$0")")
