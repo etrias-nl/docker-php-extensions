@@ -2,6 +2,7 @@
 
 apt-get update && \
 apt-get install -y --no-install-recommends \
+ghostscript \
 jpegoptim \
 libbsd-dev \
 libgraphicsmagick-q16-3 && \
