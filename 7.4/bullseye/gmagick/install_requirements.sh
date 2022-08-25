@@ -2,13 +2,14 @@
 
 apt-get update && \
 apt-get install -y --no-install-recommends \
-ghostscript \
 jpegoptim \
 libbsd-dev \
+ghostscript \
 libgraphicsmagick-q16-3 && \
 rm -rf /var/lib/apt/lists/*
 
 DIR=$(dirname "$(readlink -f "$0")")
 
-cp -P "$DIR"/lib/*.so* /usr/lib/x86_64-linux-gnu
-cp "$DIR"/bin/gm /usr/local/bin/
+cp -P "$DIR"/lib/* /usr/local/lib
+cp -R "$DIR"/share/* /usr/local/share/
+cp "$DIR"/bin/* /usr/local/bin/
