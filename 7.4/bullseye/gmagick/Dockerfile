@@ -101,6 +101,7 @@ RUN cp /usr/lib/x86_64-linux-gnu/libfontconfig.so* ./lib && \
     cp /usr/local/lib/libheif.so* ./lib && \
     cp /usr/local/lib/libjasper.so* ./lib && \
     cp /usr/local/lib/libGraphicsMagick*.so* ./lib  && \
+    cp -r /usr/local/lib/GraphicsMagick-* ./lib && \
     cp -r /usr/local/share/GraphicsMagick-* ./share
 
 
