@@ -68,10 +68,12 @@ RUN cd /tmp \
     && tar zxvf GraphicsMagick.tar.gz \
     && cd GraphicsMagick-* \
     && ./configure --disable-installed --with-jp2=yes --with-gs=yes --with-quantum-depth=16 --enable-shared=yes --disable-static \
-    && make DESTDIR=/GraphicsMagick install \
+    && make install \
     && rm -rf /tmp/GraphicsMagick*
 
 WORKDIR /extension
+
+COPY ./install* /extension/
 
 RUN mkdir lib bin share
 RUN cp /usr/lib/x86_64-linux-gnu/libgs.so* ./lib && \
@@ -109,6 +111,7 @@ RUN cp /usr/lib/x86_64-linux-gnu/libgs.so* ./lib && \
     cp /usr/local/lib/libheif.so* ./lib && \
     cp /usr/local/lib/libjasper.so* ./lib && \
     cp /usr/local/lib/libGraphicsMagick*.so* ./lib  && \
+    cp -r /usr/local/lib/GraphicsMagick-* ./lib && \
     cp -r /usr/local/share/GraphicsMagick-* ./share
 
 RUN ln -s ./libGraphicsMagick.so.3 ./lib/libGraphicsMagick-Q16.so.3 && \
