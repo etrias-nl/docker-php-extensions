@@ -76,13 +76,8 @@ WORKDIR /extension
 COPY ./install* /extension/
 
 RUN mkdir lib bin share
-RUN cp /usr/lib/x86_64-linux-gnu/libgs.so* ./lib && \
-    cp /usr/lib/x86_64-linux-gnu/libcups.so* ./lib && \
-    cp /usr/lib/x86_64-linux-gnu/libavahi-common.so* ./lib && \
-    cp /usr/lib/x86_64-linux-gnu/libavahi-client.so* ./lib && \
-    cp /usr/lib/x86_64-linux-gnu/libfontconfig.so* ./lib && \
+RUN cp /usr/lib/x86_64-linux-gnu/libfontconfig.so* ./lib && \
     cp /usr/lib/x86_64-linux-gnu/libwebp.so* ./lib && \
-    cp /usr/lib/x86_64-linux-gnu/libwebpmux.so* ./lib && \
     cp /usr/lib/x86_64-linux-gnu/liblcms2.so* ./lib && \
     cp /usr/lib/x86_64-linux-gnu/libtiff.so* ./lib && \
     cp /usr/lib/x86_64-linux-gnu/libfreetype.so* ./lib && \
@@ -91,17 +86,12 @@ RUN cp /usr/lib/x86_64-linux-gnu/libgs.so* ./lib && \
     cp /usr/lib/x86_64-linux-gnu/libopenjp2.so* ./lib && \
     cp /usr/lib/x86_64-linux-gnu/libjbig.so* ./lib && \
     cp /usr/lib/x86_64-linux-gnu/libjbig2dec.so* ./lib && \
-    cp /lib/x86_64-linux-gnu/libidn.so* ./lib && \
-    cp /lib/x86_64-linux-gnu/libdbus-1.so* ./lib && \
-    cp /usr/lib/x86_64-linux-gnu/libidn2.so* ./lib && \
     cp /usr/lib/x86_64-linux-gnu/libijs-0.35.so* ./lib && \
-    cp /usr/lib/x86_64-linux-gnu/libpaper.so* ./lib && \
     cp /usr/lib/x86_64-linux-gnu/libwmflite.so* ./lib && \
     cp /usr/lib/x86_64-linux-gnu/libXext.so* ./lib && \
     cp /usr/lib/x86_64-linux-gnu/libSM.so* ./lib && \
     cp /usr/lib/x86_64-linux-gnu/libICE.so* ./lib && \
     cp /usr/lib/x86_64-linux-gnu/libX11.so* ./lib && \
-    cp /usr/lib/x86_64-linux-gnu/liblzma.so* ./lib && \
     cp /usr/lib/x86_64-linux-gnu/liblzma.so* ./lib && \
     cp /usr/lib/x86_64-linux-gnu/libxcb.so* ./lib && \
     cp /usr/lib/x86_64-linux-gnu/libXau.so* ./lib && \
@@ -114,6 +104,7 @@ RUN cp /usr/lib/x86_64-linux-gnu/libgs.so* ./lib && \
     cp -r /usr/local/lib/GraphicsMagick-* ./lib && \
     cp -r /usr/local/share/GraphicsMagick-* ./share
 
+
 RUN ln -s ./libGraphicsMagick.so.3 ./lib/libGraphicsMagick-Q16.so.3 && \
     ln -s ./libGraphicsMagick-Q16.so.3 ./lib/libGraphicsMagick-Q16.so.2 && \
     ln -s ./libGraphicsMagick-Q16.so.3 ./lib/libGraphicsMagick-Q16.so
@@ -122,8 +113,7 @@ RUN ln -s ./libGraphicsMagickWand.so ./lib/libGraphicsMagickWand-Q16.so.3 && \
     ln -s ./libGraphicsMagickWand-Q16.so.3 ./lib/libGraphicsMagickWand-Q16.so.2 && \
     ln -s ./libGraphicsMagickWand-Q16.so.3 ./lib/libGraphicsMagickWand-Q16.so
 
-RUN cp /usr/local/bin/gm /extension/bin/ && \
-    cp /usr/bin/gs /extension/bin/
+RUN cp /usr/local/bin/gm /extension/bin/
 
 FROM alpine:3.15.0
 COPY --from=builder /extension/ /extension/
