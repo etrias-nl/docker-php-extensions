@@ -11,9 +11,10 @@ RUN apt-get update && \
 
 # hadolint ignore=DL3003
 RUN cd /tmp \
-    && curl -L "https://github.com/php/pecl-networking-gearman/archive/refs/tags/gearman-$(cat /extension/version).tar.gz" --output /tmp/gearman.tar.gz \
+    #&& curl -L "https://github.com/php/pecl-networking-gearman/archive/refs/tags/gearman-$(cat /extension/version).tar.gz" --output /tmp/gearman.tar.gz \
+    && curl -L "https://github.com/php/pecl-networking-gearman/archive/$(cat /extension/version).tar.gz" --output /tmp/gearman.tar.gz \
     && tar -xf gearman.tar.gz \
-    && cd pecl-networking-gearman-gearman-* \
+    && cd pecl-networking-gearman-* \
     && phpize \
     && ./configure \
     && make \
