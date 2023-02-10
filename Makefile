@@ -23,6 +23,8 @@ ${PHP_EXT_DIR}/%/.publisher: DOCKER_TAG=${DOCKER_IMAGE}:${VERSION}
 ${PHP_EXT_DIR}/%/.publisher: ${PHP_EXT_DIR}/%/.releaser
 	echo "[PUBLISHING] ${DOCKER_TAG}"
 	docker push "${DOCKER_TAG}"
+	git tag "${VERSION}"
+	git push --tags
 
 release: ${PHP_EXT_DIR}/${ext}/.releaser
 release-all: $(shell find "${PHP_EXT_DIR}" -name Dockerfile | sed 's/Dockerfile/.releaser/')
