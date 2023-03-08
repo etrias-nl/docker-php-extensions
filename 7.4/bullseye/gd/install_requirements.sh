@@ -2,6 +2,8 @@
 
 apt-get update && \
 apt-get install -y --no-install-recommends \
+libpng-dev \
+libjpeg-dev \
 libfreetype6 \
 libpng16-16=1.6.37-3 \
 libwebp-dev \
