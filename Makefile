@@ -36,3 +36,5 @@ pt-release:
 	docker buildx build --progress "${DOCKER_PROGRESS}" -t "${DOCKER_PT_TAG}" --load percona-toolkit
 pt-publish:
 	docker push "${DOCKER_PT_TAG}"
+	git tag "${DOCKER_PT_TAG}"
+	git push --tags
