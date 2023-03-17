@@ -1,4 +1,4 @@
-FROM php:7.4-bullseye as builder
+FROM php:8.2-bullseye as builder
 
 WORKDIR /extension
 
