@@ -18,5 +18,5 @@ RUN docker-php-ext-install imap && \
     cp "$(php -r "echo ini_get ('extension_dir');")/imap.so" ./
 COPY ./install* ./
 
-FROM alpine:3.15.0
+FROM alpine:3.17.2
 COPY --from=builder /extension/ /extension/
