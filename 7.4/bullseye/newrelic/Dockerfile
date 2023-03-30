@@ -15,5 +15,5 @@ RUN cd /tmp \
 
 COPY ./install* /extension/
 
-FROM alpine:3.15.0
+FROM alpine:3.17.3
 COPY --from=builder /extension/ /extension/
