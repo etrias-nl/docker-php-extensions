@@ -18,5 +18,5 @@ RUN docker-php-ext-install calendar && \
 
 COPY ./install* ./
 
-FROM alpine:3.15.0
+FROM alpine:3.17.3
 COPY --from=builder /extension/ /extension/
