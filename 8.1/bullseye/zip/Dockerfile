@@ -14,5 +14,5 @@ RUN docker-php-ext-install zip && \
     cp "$(php -r "echo ini_get ('extension_dir');")/zip.so" ./
 COPY ./install* ./
 
-FROM alpine:3.15.0
+FROM alpine:3.17.3
 COPY --from=builder /extension/ /extension/
