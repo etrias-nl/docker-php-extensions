@@ -301,10 +301,3 @@ updates:
             interval: daily
         assignees:
             - ro0NL
-    -
-        package-ecosystem: docker
-        directory: ./percona-toolkit
-        schedule:
-            interval: daily
-        assignees:
-            - ro0NL

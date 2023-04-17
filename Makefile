@@ -30,11 +30,3 @@ release: ${PHP_EXT_DIR}/${ext}/.releaser
 release-all: $(shell find "${PHP_EXT_DIR}" -name Dockerfile | sed 's/Dockerfile/.releaser/')
 publish: ${PHP_EXT_DIR}/${ext}/.publisher
 publish-all: $(shell find "${PHP_EXT_DIR}" -name Dockerfile | sed 's/Dockerfile/.publisher/')
-
-pt-release:
-	${exec_docker} hadolint/hadolint hadolint --ignore DL3059 percona-toolkit/Dockerfile
-	docker buildx build --progress "${DOCKER_PROGRESS}" -t "${DOCKER_PT_TAG}" --load percona-toolkit
-pt-publish:
-	docker push "${DOCKER_PT_TAG}"
-	git tag "${DOCKER_PT_TAG}"
-	git push --tags
