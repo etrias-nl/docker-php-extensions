@@ -226,13 +226,6 @@ updates:
             - ro0NL
     -
         package-ecosystem: docker
-        directory: ./7.4/bullseye/msgpack
-        schedule:
-            interval: daily
-        assignees:
-            - ro0NL
-    -
-        package-ecosystem: docker
         directory: ./7.4/bullseye/calendar
         schedule:
             interval: daily
