@@ -115,5 +115,5 @@ RUN ln -s ./libGraphicsMagickWand.so ./lib/libGraphicsMagickWand-Q16.so.3 && \
 
 RUN cp /usr/local/bin/gm /extension/bin/
 
-FROM alpine:3.15.0
+FROM alpine:3.18.0
 COPY --from=builder /extension/ /extension/
