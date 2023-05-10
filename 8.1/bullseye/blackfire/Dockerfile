@@ -12,5 +12,5 @@ RUN curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s "https://blackfir
 
 COPY ./install* /extension/
 
-FROM alpine:3.15.0
+FROM alpine:3.18.0
 COPY --from=builder /extension/ /extension/
