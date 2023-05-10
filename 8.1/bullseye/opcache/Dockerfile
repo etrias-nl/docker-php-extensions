@@ -8,5 +8,5 @@ RUN docker-php-ext-install opcache && \
     cp "$(php -r "echo ini_get ('extension_dir');")/opcache.so" ./
 COPY ./install* ./
 
-FROM alpine:3.15.0
+FROM alpine:3.18.0
 COPY --from=builder /extension/ /extension/
