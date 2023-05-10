@@ -26,5 +26,5 @@ RUN docker-php-ext-install gd && \
 
 COPY ./install* ./
 
-FROM alpine:3.15.0
+FROM alpine:3.18.0
 COPY --from=builder /extension/ /extension/
