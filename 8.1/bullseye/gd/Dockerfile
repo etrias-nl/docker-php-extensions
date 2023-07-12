@@ -12,12 +12,14 @@ RUN apt-get update && \
     libjpeg62-turbo=1:2.0.6-4 \
     libfreetype6-dev \
     libpng-dev=1.6.37-3 \
+    libwebp-dev \
     libjpeg62-turbo-dev=1:2.0.6-4 && \
     rm -rf /var/lib/apt/lists/*
 
 RUN docker-php-ext-configure gd \
     --with-freetype=/usr \
-    --with-jpeg=/usr
+    --with-jpeg=/usr \
+    --with-webp=/usr
 
 RUN docker-php-ext-install gd && \
      cp "$(php -r "echo ini_get ('extension_dir');")/gd.so" ./
